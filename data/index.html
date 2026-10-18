@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090d0d">
+  <title>ATMOS // Environment Monitor</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-icon" aria-hidden="true">◈</span><span>ATMOS<span class="brand-dot">.</span><small>ENVIRONMENT MONITOR / 01</small></span></div>
+      <div class="header-right"><span class="pill"><span class="status-light"></span><span id="connectionLabel">CONNECTING</span></span><span class="header-clock" id="clock">--:--:--</span></div>
+    </header>
+    <main>
+      <section class="intro"><div><div class="eyebrow">/ SYSTEM OVERVIEW <span class="line"></span> ESP32-S3 + DHT22</div><h1>Environment <em>telemetry.</em></h1><p>Моніторинг мікроклімату в реальному часі</p></div><div class="monitor-state"><span class="pulse-dot"></span><div><strong>MONITORING ACTIVE</strong><small>Оновлення кожні <span id="intervalLabel">10</span> с</small></div></div></section>
+      <div class="section-title"><span>01 / LIVE METRICS</span><span>LIVE FEED <span class="blink">●</span></span></div>
+      <section class="metrics" aria-label="Поточні вимірювання">
+        <article class="metric metric-temp"><div class="metric-header"><span>ТЕМПЕРАТУРА</span><span class="metric-glyph">TEMP / °C</span></div><div class="metric-middle"><div class="reading"><span id="temperature">--.-</span><span class="unit">°C</span></div><div class="metric-icon">⌁</div></div><div class="metric-footer"><span class="tag">● SENSOR 01</span><span id="tempStatus" class="condition">STABLE</span></div></article>
+        <article class="metric metric-humidity"><div class="metric-header"><span>ВОЛОГІСТЬ</span><span class="metric-glyph">HUM / %</span></div><div class="metric-middle"><div class="reading"><span id="humidity">--.-</span><span class="unit">%</span></div><div class="metric-icon">◉</div></div><div class="metric-footer"><span class="tag">● SENSOR 02</span><span id="humidityStatus" class="condition">STABLE</span></div></article>
+      </section>
+      <div class="section-title"><span>02 / SENSOR ANALYTICS</span><span>LAST 10 READINGS</span></div>
+      <section class="chart-panel"><div class="chart-header"><div><h2>Історія вимірювань</h2><p>Дані з DHT22 • Останні 10 записів</p></div><button id="refreshButton" class="outline-button" type="button">↻ <span>ОНОВИТИ</span></button></div><div class="chart-legend"><span><i class="legend-temp"></i> Температура</span><span><i class="legend-humidity"></i> Вологість</span></div><div class="charts"><div class="mini-chart"><div class="mini-label"><span>ТЕМПЕРАТУРА / °C</span><strong id="chartTempLast">--.-</strong></div><svg id="tempChart" viewBox="0 0 800 160" preserveAspectRatio="none" role="img" aria-label="Графік температури"></svg></div><div class="mini-chart"><div class="mini-label"><span>ВОЛОГІСТЬ / %</span><strong id="chartHumLast">--.-</strong></div><svg id="humidityChart" viewBox="0 0 800 160" preserveAspectRatio="none" role="img" aria-label="Графік вологості"></svg></div></div><div class="chart-axis"><span>← РАНІШЕ</span><span>ЗАРАЗ →</span></div></section>
+      <section class="bottom-grid"><article class="info-card"><div class="card-caption">03 / DEVICE STATUS</div><h2>Стан пристрою</h2><div class="device-row"><span>Мікроконтролер</span><strong>ESP32-S3</strong></div><div class="device-row"><span>Сенсор</span><strong>DHT22</strong></div><div class="device-row"><span>Режим</span><strong class="green">LIVE SENSOR</strong></div><div class="device-row"><span>Останнє оновлення</span><strong id="lastUpdate">--:--:--</strong></div></article><article class="info-card"><div class="card-caption">04 / SYSTEM LOG</div><h2>Журнал подій</h2><div id="log" class="log" aria-live="polite"></div></article></section>
+    </main>
+    <footer><span>ATMOS // BUILT FOR ESP32-S3</span><span>FIRMWARE <span class="green">V0.1</span></span></footer>
+  </div>
+</body>
+</html>
